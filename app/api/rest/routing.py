@@ -8,6 +8,7 @@ import time
 from flask import request
 from app.api.rest.base import BaseResource, SecureResource, rest_resource
 
+
 @rest_resource
 class ResourceOne(BaseResource):
     """ /api/resource/one """

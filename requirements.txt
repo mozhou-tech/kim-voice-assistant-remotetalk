@@ -3,9 +3,12 @@ click==6.7
 Flask==0.12.2
 Flask-RESTful==0.3.6
 gunicorn==19.7.1
+inflection==0.3.1
 itsdangerous==0.24
 Jinja2==2.9.6
+jsonschema==2.6.0
 MarkupSafe==1.0
+openapi==1.0.0
 python-dateutil==2.6.1
 pytz==2017.3
 six==1.11.0

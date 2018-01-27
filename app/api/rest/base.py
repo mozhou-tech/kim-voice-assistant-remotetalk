@@ -5,6 +5,7 @@ from flask_restful import Resource, abort
 from app.api import api_rest
 from app.api.security import require_auth
 
+
 class BaseResource(Resource):
 
     def get(self, *args, **kwargs):
