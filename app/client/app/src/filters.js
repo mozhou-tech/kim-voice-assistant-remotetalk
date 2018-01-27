@@ -9,9 +9,9 @@ let filters = {
   	let val = (value / 1)
 		return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 	}
-}
+};
 
 // Register Filters
 Object.keys(filters).forEach(function (filterName) {
   Vue.filter(filterName, filters[filterName])
-})
+});

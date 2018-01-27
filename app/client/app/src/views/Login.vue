@@ -7,7 +7,7 @@
     </div>
     <div class="level">
       <div class="level-item has-text-centered">
-        <router-link tag="a" :to="{ path: 'one'}" class="button">Login</router-link>
+        <router-link tag="a" :to="{ path: 'one'}" class="button">小云智能控制中心 >></router-link>
       </div>
   </div>
 </section>

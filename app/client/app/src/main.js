@@ -16,5 +16,5 @@ var vue = new Vue({
   template: '<App/>',
   mixins: [Mixins],
   components: { App }
-})
+});
 

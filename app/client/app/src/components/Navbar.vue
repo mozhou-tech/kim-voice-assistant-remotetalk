@@ -5,7 +5,7 @@
         <img src="../assets/img/logo.png">
       </a>
       <a class="navbar-item" href="#">
-        Flask-Vue
+        小云智能控制中心
       </a>
     </div>
     <div class="navbar-menu">

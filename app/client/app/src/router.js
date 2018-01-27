@@ -4,11 +4,12 @@ import Router from 'vue-router'
 import Navbar from './components/Navbar'
 import SubNavbar from './components/SubNavbar'
 
-import PageOne from './views/PageOne'
-import PageTwo from './views/PageTwo'
+import Chat from './views/Chat'
+import Log from './views/Log'
+import Status from './views/Status'
 import Login from './views/Login'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -19,19 +20,25 @@ export default new Router({
       }
     },
     {
-      path: '/one',
+      path: '/status',
       components: {
         navbar: Navbar,
         subnavbar: SubNavbar,
-        main: PageOne
+        main: Status
       }
-    },
-    {
-      path: '/two',
+    }, {
+      path: '/chat',
       components: {
         navbar: Navbar,
         subnavbar: SubNavbar,
-        main: PageTwo
+        main: Chat
+      }
+    },{
+      path: '/log',
+      components: {
+        navbar: Navbar,
+        subnavbar: SubNavbar,
+        main: Log
       }
     }
   ]
