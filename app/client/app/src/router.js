@@ -4,9 +4,10 @@ import Router from 'vue-router'
 import Navbar from './components/Navbar'
 import SubNavbar from './components/SubNavbar'
 
-import Chat from './views/Chat'
-import Log from './views/Log'
-import Status from './views/Device'
+import DeviceChat from './views/DeviceChat'
+import DeviceLog from './views/DeviceLog'
+import DeviceList from './views/DeviceList'
+import Device from './views/Device'
 import Login from './views/Login'
 import About from './views/About'
 
@@ -21,26 +22,22 @@ export default new Router({
       }
     },
     {
-      path: '/device',
-      components: {
-        navbar: Navbar,
-        subnavbar: SubNavbar,
-        main: Status
-      },
+        path: '/device',
+        redirect:'/device/list',
+        components: {
+          navbar: Navbar,
+          subnavbar: SubNavbar,
+          main: Device
+        },
         children:[{
+          path: 'list',
+          component: DeviceList
+          }, {
           path: 'chat',
-          components: {
-            navbar: Navbar,
-            subnavbar: SubNavbar,
-            main: Chat
-            }
+          component: DeviceChat
           }, {
           path: 'log',
-          components: {
-            navbar: Navbar,
-            subnavbar: SubNavbar,
-            main: Log
-          }
+          component: DeviceLog
         }]
     },
       {

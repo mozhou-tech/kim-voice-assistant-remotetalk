@@ -12,14 +12,24 @@
               </header>
               <div class="card-content">
                 <div class="content">
-                  <h3>作者信息</h3>
+                       <br>
+                  <h4>项目介绍</h4>
+
+                  <p>
+                    小云智能音箱是一个开源的智能家居方案，灵感来自外国友人的<a href="https://github.com/jasperproject/jasper-client" target="_blank">"Jasper Voice Computing Platform"</a>。
+                      除客户端外，小云可以通过部署云端服务，提供远端APP控制和OpenAPI对接能力，增加可玩性。</p>
+                    <p>小云与阿里云的深度融合，使设备可以方便的使用云端能力，让开源智能音箱更加"智能化"，充满魅力。
+                  </p>
+                    <br>
+                  <h4>作者信息</h4>
 
                   <p>
                     姓名：刘远程<br/>
-                    邮箱：<a href="mailto:tenstone@foxmail.com">tenstone@foxmail.com</a><br/>
-                    Github：<a href="https://github.com/tenstone">https://github.com/tenstone</a>
+                    邮箱：<a href="mailto:tenstone@foxmail.com" target="_blank">tenstone@foxmail.com</a><br/>
+                    Github：<a href="https://github.com/tenstone" target="_blank">https://github.com/tenstone</a>
                   </p>
-                  <h3>开源协议</h3>
+                    <br>
+                  <h4>开源协议</h4>
                   <p>MIT License</p>
 
                   <p>
