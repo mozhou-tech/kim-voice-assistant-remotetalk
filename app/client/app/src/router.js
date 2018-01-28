@@ -6,8 +6,9 @@ import SubNavbar from './components/SubNavbar'
 
 import Chat from './views/Chat'
 import Log from './views/Log'
-import Status from './views/Status'
+import Status from './views/Device'
 import Login from './views/Login'
+import About from './views/About'
 
 Vue.use(Router);
 
@@ -20,25 +21,34 @@ export default new Router({
       }
     },
     {
-      path: '/status',
+      path: '/device',
       components: {
         navbar: Navbar,
         subnavbar: SubNavbar,
         main: Status
-      }
-    }, {
-      path: '/chat',
+      },
+        children:[{
+          path: 'chat',
+          components: {
+            navbar: Navbar,
+            subnavbar: SubNavbar,
+            main: Chat
+            }
+          }, {
+          path: 'log',
+          components: {
+            navbar: Navbar,
+            subnavbar: SubNavbar,
+            main: Log
+          }
+        }]
+    },
+      {
+      path: '/about',
       components: {
         navbar: Navbar,
         subnavbar: SubNavbar,
-        main: Chat
-      }
-    },{
-      path: '/log',
-      components: {
-        navbar: Navbar,
-        subnavbar: SubNavbar,
-        main: Log
+        main: About
       }
     }
   ]
