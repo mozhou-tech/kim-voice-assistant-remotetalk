@@ -14,19 +14,20 @@
                    asdf
                 </div>
               </div>
-              <footer class="card-footer">
-                <div class="field has-addons" style="width: 100%;">
-                  <div class="control" style="width: 70%;">
-                    <input class="input" type="text" placeholder="你想说点啥？">
-                  </div>
-                  <div class="control" style="width: 30%;">
-                    <a class="button is-info">
-                      发送消息
-                    </a>
-                  </div>
-                </div>
-              </footer>
+
             </div>
+          <div class="bottom">
+            <div class="field has-addons" style="width: 100%;">
+              <div class="control" style="width: 70%;">
+                <input class="input" type="text" placeholder="你想说点啥？">
+              </div>
+              <div class="control" style="width: 30%;">
+                <a class="button is-info">
+                  发送消息
+                </a>
+              </div>
+            </div>
+          </div>
       </section>
     </div>
 
@@ -52,6 +53,8 @@ export default {
 <style lang="sass" scoped>
 .card .content
   height: 500px
-.card .card-footer
+.bottom
+  position: fixed
+  bottom: 20px
   width: 100%
 </style>

@@ -3,8 +3,8 @@ import backend from './backend'
 
 export default {
 
-  fetchResourceOne: function  (context) {
-    backend.fetchResourceOne().then((responseData) => {
+  getDeviceLog: function  (context) {
+    backend.getDeviceLog().then((responseData) => {
       context.commit('setResource', responseData)
     })
   },
