@@ -9,9 +9,7 @@
     <section class="section">
       <transition name="fade">
         <div class="container">
-
           <router-view name="main"></router-view>
-
         </div>
       </transition>
     </section>
