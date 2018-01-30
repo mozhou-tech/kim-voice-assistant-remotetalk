@@ -29,7 +29,6 @@ class TestComponentsAliyunOTS(unittest.TestCase):
         self.ots_client.batch_get_row()
 
 
-
 if __name__ == '__main__':
     logger.init(info=True)
     unittest.main()
