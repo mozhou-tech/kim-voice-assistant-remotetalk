@@ -21,12 +21,19 @@ class TestComponentsAliyunOTS(unittest.TestCase):
         """
         self.ots_client.get_table_list()
 
-    def test_batch_get_row(self):
+    def atest_get_last_limit_row(self):
+        """
+        获得
+        :return:
+        """
+        print(self.ots_client.get_last_limit_row())
+
+    def test_get_hour_row(self):
         """
         批量读取行数据
         :return:
         """
-        self.ots_client.batch_get_row()
+        print(self.ots_client.get_hour_row())
 
 
 if __name__ == '__main__':

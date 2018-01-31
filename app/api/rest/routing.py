@@ -7,6 +7,7 @@ http://flask-restful.readthedocs.io/en/latest/
 import time
 from flask import request
 from app.api.rest.base import BaseResource, SecureResource, rest_resource
+from app.components.aliyun_ots import OTSTools
 
 
 @rest_resource
@@ -14,12 +15,12 @@ class DeviceLog(BaseResource):
     """ /api/resource/one """
     endpoints = ['/device/log']
 
-    def get(self):
-        return {'device_name': 'xiaoyun', 'log_content': True, 'datetime' : '2018-01-28 21:00:03'}
+    def __init__(self):
+        self.ots_client = OTSTools.get_instance()
 
-    def post(self):
-        json_payload = request.json
-        return {'name': 'Resource Post'}
+    def get(self):
+        return self.ots_client.get_last_limit_row()
+
 
 
 @rest_resource
@@ -27,8 +28,10 @@ class DeviceChat(BaseResource):
     endpoints = ['/device/chat']
 
     def get(self, *args, **kwargs):
-        return {}
+        return kwargs
 
+    def post(self, *args, **kwargs):
+        return ['asdf']
 
 
 @rest_resource
