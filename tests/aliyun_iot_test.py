@@ -14,11 +14,12 @@ class TestComponentsAliyunIOT(unittest.TestCase):
     def setUp(self):
         self.iot_server = IotServer.get_instance()
 
-    def test_get_hour_row(self):
+    def test_send_device_message(self):
         """
         批量读取行数据
         :return:
         """
+        self.iot_server.send_device_message('马云')
 
 
 if __name__ == '__main__':
