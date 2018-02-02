@@ -18,6 +18,7 @@ export default new Vuex.Store({
   getters,
   state: {
     resource: null,
-    isLoading: false
+    isLoading: false,
+    device_conversation_logs: []
   }
 })

@@ -7,6 +7,9 @@ export default {
   },
   setResource: function (state, value) {
     state.resource = value
+  },
+  setDeviceConversationLog: function (state, value) {
+    state.device_conversation_logs = value
   }
 }
 

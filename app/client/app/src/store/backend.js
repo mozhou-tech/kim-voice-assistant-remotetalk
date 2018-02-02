@@ -12,11 +12,12 @@ $backend.interceptors.response.use(function (response) {
   }, function (error) {
     console.log(error);
     return Promise.reject(error)
-  });
+});
 
 export default {
 
-  getDeviceLog () {
+  fetchDeviceConversationLog () {
+    console.log('get device conversation logs');
     return $backend.get(`device/log`)
       .then(response => response.data)
   },

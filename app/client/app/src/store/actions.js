@@ -3,9 +3,9 @@ import backend from './backend'
 
 export default {
 
-  getDeviceLog: function  (context) {
-    backend.getDeviceLog().then((responseData) => {
-      context.commit('setResource', responseData)
+  fetchDeviceConversationLog: function  (context) {
+    backend.fetchDeviceConversationLog().then((responseData) => {
+      context.commit('setDeviceConversationLog', responseData)
     })
   },
 
