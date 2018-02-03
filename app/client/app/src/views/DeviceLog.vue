@@ -41,6 +41,7 @@
             <tr><td>mic</td><td>{{ chosenItem.mic }}</td></tr>
             <tr><td>speaker</td><td>{{ chosenItem.speaker }}</td></tr>
             <tr><td>内容</td><td>{{ chosenItem.content }}</td></tr>
+            <tr><td>时间</td><td>{{ chosenItem.timestamp | formatDate }}</td></tr>
           </table>
         </section>
         <footer class="modal-card-foot">

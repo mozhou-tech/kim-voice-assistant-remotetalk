@@ -9,10 +9,9 @@ export default {
     })
   },
 
-  sendChatMessage: function  (message) {
+  sendChatMessage: function  (context, message) {
   	backend.sendChatMessage(message).then((responseData) => {
   	    console.log(responseData);
-  		context.commit('setResource', responseData)
   	})
   }
 }

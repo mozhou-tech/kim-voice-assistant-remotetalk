@@ -34,7 +34,7 @@ class DeviceChat(BaseResource):
         return request.args
 
     def post(self):
-        ret = self.iot_server.send_device_message(request.form.get('message'))
+        ret = self.iot_server.send_device_message(request.json.get('message')['data'])
         if ret:
             return {'errcode': 0, 'errmsg': 'ok'}
         else:
