@@ -9,6 +9,8 @@ from flask import request
 from app.api.rest.base import BaseResource, SecureResource, rest_resource
 from app.components.aliyun_ots import OTSTools
 from app.components.aliyun_iot import IotServer
+from config.path import APP_PATH
+import json
 
 
 @rest_resource
@@ -34,11 +36,38 @@ class DeviceChat(BaseResource):
         return request.args
 
     def post(self):
-        ret = self.iot_server.send_device_message(request.json.get('message')['data'])
+        ret = self.iot_server.send_device_message(request.json.get('data'))
         if ret:
             return {'errcode': 0, 'errmsg': 'ok'}
         else:
             return {'errcode': -1, 'errmsg': 'failed'}
+
+
+@rest_resource
+class DeviceChatListen(BaseResource):
+    endpoints = ['/device/chat/listen']
+
+    def get(self):
+        """
+        读取聊天信息
+        :return:
+        """
+        with open(APP_PATH + '/data/client_report_data.json', mode='a') as f:
+            f.read()
+            return {'errcode': 0, 'errmsg': 'ok'}
+
+    def post(self):
+        """
+        接受设备推送的反馈
+        :return:
+        """
+        ret = request.json.get('data')
+        if isinstance(ret, dict):
+            ret = json.dumps(ret)
+        with open(APP_PATH + '/data/client_report_data.json', mode='w+') as f:
+            f.write(ret)
+            return {'errcode': 0, 'errmsg': 'ok'}
+
 
 
 @rest_resource

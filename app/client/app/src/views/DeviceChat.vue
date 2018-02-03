@@ -22,7 +22,7 @@
                 <input class="input" v-model="message" type="text" placeholder="你想说点啥？">
               </div>
               <div class="control" style="width: 30%;">
-                <button type="submit" class="button is-info" v-on:click="sendChatMessage()">
+                <button type class="button is-info" v-on:click="sendChatMessage()">
                   发送消息
                 </button>
               </div>
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     sendChatMessage: function () {
-      this.$store.dispatch('sendChatMessage', {data: this.message})
+      this.$store.dispatch('sendChatMessage', this.message)
       console.log('send message: ' + this.message)
     }
   },

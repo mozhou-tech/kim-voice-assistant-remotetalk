@@ -14,7 +14,7 @@ let filters = {
   	 return moment.unix(value/1000).format('YYYY-MM-DD hh:mm')
   },
   shortContent(value){
-     if(value.length <= 16){
+     if(value.length <= 20){
          return value
      }
   	 return value.substr(0,16)+'...'
