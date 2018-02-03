@@ -52,9 +52,15 @@ class DeviceChatListen(BaseResource):
         读取聊天信息
         :return:
         """
-        with open(APP_PATH + '/data/client_report_data.json', mode='a') as f:
-            f.read()
-            return {'errcode': 0, 'errmsg': 'ok'}
+        with open(APP_PATH + '/data/client_report_data.json', mode='r+') as f:
+            read_str = f.read().strip()
+            if read_str:
+                data = json.loads(read_str)
+            else:
+                return {'errcode': 0, 'errmsg': 'ok', 'data': False}
+        with open(APP_PATH + '/data/client_report_data.json', mode='w') as f:
+            f.write('')
+        return {'errcode': 0, 'errmsg': 'ok', 'data': data}
 
     def post(self):
         """
