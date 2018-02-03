@@ -9,8 +9,9 @@ export default {
     })
   },
 
-  fetchResourceTwo: function  (context, resourceId) {
-  	backend.fetchResourceTwo(resourceId).then((responseData) => {
+  sendChatMessage: function  (message) {
+  	backend.sendChatMessage(message).then((responseData) => {
+  	    console.log(responseData);
   		context.commit('setResource', responseData)
   	})
   }

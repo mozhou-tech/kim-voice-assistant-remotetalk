@@ -19,10 +19,10 @@
           <div class="bottom">
             <div class="field has-addons" style="width: 100%;">
               <div class="control" style="width: 70%;">
-                <input class="input" type="text" placeholder="你想说点啥？">
+                <input class="input" v-model="message" type="text" placeholder="你想说点啥？">
               </div>
               <div class="control" style="width: 30%;">
-                <a class="button is-info">
+                <a class="button is-info" v-on:click="sendChatMessage()">
                   发送消息
                 </a>
               </div>
@@ -39,7 +39,13 @@ export default {
   name: 'DeviceChat',
   data () {
     return {
-
+      message: ''
+    }
+  },
+  methods: {
+    sendChatMessage: function () {
+      this.$store.dispatch('sendChatMessage', {'message': this.message})
+      console.log('send message: ' + this.message)
     }
   },
   computed: {

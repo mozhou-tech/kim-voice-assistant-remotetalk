@@ -23,7 +23,6 @@ class DeviceLog(BaseResource):
         return self.ots_client.get_last_limit_row()
 
 
-
 @rest_resource
 class DeviceChat(BaseResource):
     endpoints = ['/device/chat']

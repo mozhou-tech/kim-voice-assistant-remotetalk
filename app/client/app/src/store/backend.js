@@ -22,8 +22,9 @@ export default {
       .then(response => response.data)
   },
 
-  fetchResourceTwo (resourceId) {
-    return $backend.get(`resource/two/${resourceId}`)
+  sendChatMessage (message) {
+    console.log('send chat message.');
+    return $backend.post(`device/chat`, {message: message})
       .then(response => response.data)
   }
 }
