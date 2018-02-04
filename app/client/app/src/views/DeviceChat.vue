@@ -11,7 +11,7 @@
               </header>
               <div class="card-content">
                 <div class="content">
-                   <ul>
+                   <ul style="list-style-type: none;">
                     <li v-for="item in chatItems"> {{ item.text }} &nbsp;&nbsp;&nbsp;<small>{{ item.time }}</small></li>
                     <li v-if="chatItems.length == 0">暂无对话，请发送消息给我吧</li>
                    </ul>
