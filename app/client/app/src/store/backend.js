@@ -25,7 +25,11 @@ export default {
   sendChatMessage (message) {
     console.log('send chat message.');
     console.log(message)
-    return $backend.post(`device/chat`, message)
+    return $backend.post(`device/chat`, {data: message})
       .then(response => response.data)
+  },
+  listenChatMessageBack () {
+    return $backend.get('/device/chat/listen')
+        .then(response => response.data)
   }
 }

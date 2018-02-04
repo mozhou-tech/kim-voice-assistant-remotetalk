@@ -19,6 +19,7 @@ export default new Vuex.Store({
   state: {
     resource: null,
     isLoading: false,
-    device_conversation_logs: []
+    device_conversation_logs: [],
+    chatItems: []
   }
 })
