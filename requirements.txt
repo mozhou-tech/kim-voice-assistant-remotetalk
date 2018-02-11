@@ -14,7 +14,6 @@ jsonschema==2.6.0
 MarkupSafe==1.0
 openapi==1.0.0
 protobuf-py3==2.5.1
-pycrypto==2.6.1
 python-dateutil==2.6.1
 pytz==2017.3
 PyYAML==3.12
