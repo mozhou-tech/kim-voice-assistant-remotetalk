@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_socketio import SocketIO,emit
 
 from app.api import api_rest, api_bp
 from app.client import client_bp
@@ -11,4 +10,3 @@ app.register_blueprint(client_bp)
 from . import config
 app.logger.info('>>> {}'.format(app.config['MODE']))
 
-socketio = SocketIO(app)
