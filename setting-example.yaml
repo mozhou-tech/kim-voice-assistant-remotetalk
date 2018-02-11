@@ -1,3 +1,7 @@
 aliyun:
   ak_id: "LTAIsk0qFRkhyL2Q"
   ak_secret: "xi7FP7EFafFV3CNUO0G2HAOzvSRAPi"
+  ots_endpoint: "https://xy-conversations.cn-shanghai.ots.aliyuncs.com"
+  ots_conversation_table: "conversation_logs"
+  iot_device_name: "xiaoyun001"
+  iot_product_key: "5ixlFmlsHNI"

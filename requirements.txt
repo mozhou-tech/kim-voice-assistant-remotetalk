@@ -1,3 +1,5 @@
+aliyun-python-sdk-core-v3==2.5.5
+aliyun-python-sdk-iot==5.0.1
 aniso8601==1.3.0
 certifi==2018.1.18
 click==6.7
@@ -12,8 +14,10 @@ jsonschema==2.6.0
 MarkupSafe==1.0
 openapi==1.0.0
 protobuf-py3==2.5.1
+pycrypto==2.6.1
 python-dateutil==2.6.1
 pytz==2017.3
+PyYAML==3.12
 six==1.11.0
 tablestore==4.3.2
 urllib3==1.22
