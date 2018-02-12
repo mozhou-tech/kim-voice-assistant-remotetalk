@@ -24,5 +24,5 @@ class Production(Config):
 
 
 # Set FLASK_CONFIG env to 'Production' or 'Development' to set Config
-flask_config = os.environ.get('FLASK_CONFIG', 'Development')
+flask_config = os.environ.get('FLASK_CONFIG', 'Production')
 app.config.from_object('app.config.{}'.format(flask_config))
