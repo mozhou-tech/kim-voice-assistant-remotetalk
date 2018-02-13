@@ -7,7 +7,7 @@ import json
 class OTSTools:
     def __init__(self):
         self.client = OTSClient(end_point=profile.aliyun_ots_endpoint, access_key_id=profile.aliyun_ak_id,
-                                access_key_secret=profile.aliyun_ak_secret, instance_name='xy-conversations')
+                                access_key_secret=profile.aliyun_ak_secret, instance_name=profile.aliyun_ots_instance)
         self.table_name = profile.aliyun_ots_conversation_table
 
     def get_table_list(self):
