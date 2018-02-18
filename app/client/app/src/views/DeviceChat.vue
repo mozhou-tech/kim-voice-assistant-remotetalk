@@ -75,6 +75,9 @@ export default {
           _this.$store.dispatch('listenChatMessageBack')
         }, 1500)
       }
+    },
+    destroyed () {
+      clearInterval()
     }
   },
   computed: {
