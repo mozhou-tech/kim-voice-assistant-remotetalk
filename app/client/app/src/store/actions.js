@@ -8,13 +8,18 @@ export default {
       context.commit('setDeviceConversationLog', responseData)
     })
   },
-
-  sendChatMessage: function  (context, message) {
-  	backend.sendChatMessage(message).then((responseData) => {
-  	    console.log(responseData);
-  	})
+  fetchDeviceStat: function (context) {
+    backend.fetchDeviceStat().then((responseData) => {
+      if (responseData.errcode === 0) {
+        context.commit('setDeviceStat', responseData.data)
+      }
+    })
   },
-
+  sendChatMessage: function (context, message) {
+    backend.sendChatMessage(message).then((responseData) => {
+      console.log(responseData)
+    })
+  },
   listenChatMessageBack: function (context) {
     backend.listenChatMessageBack().then((responseData) => {
       if (responseData.errcode === 0 && responseData.data){

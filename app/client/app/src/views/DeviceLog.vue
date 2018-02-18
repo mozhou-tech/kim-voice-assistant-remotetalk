@@ -3,7 +3,7 @@
 
     <div class="card">
       <header class="card-header">
-        <p class="card-header-title">设备运行日志</p>
+        <p class="card-header-title">会话日志</p>
         <div class="card-header-icon">
          <button class="button is-link is-small is-outlined" v-on:click="refreshConversations()">刷新数据</button>
         </div>
@@ -19,7 +19,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-on:click="openModal(item)" v-for="item in device_conversation_logs">
+                <tr v-on:click="openModal(item)" v-for="item in deviceConversationLogs">
                   <td>{{ item.device }}</td>
                   <td>{{ item.timestamp | formatDate }}</td>
                   <td>{{ item.content | shortContent }}</td>
@@ -66,8 +66,8 @@ export default {
     }
   },
   computed: {
-    device_conversation_logs () {
-      return this.$store.state.device_conversation_logs
+    deviceConversationLogs () {
+      return this.$store.state.deviceConversationLogs
     }
   },
   methods: {

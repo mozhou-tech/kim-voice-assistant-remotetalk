@@ -9,14 +9,17 @@ export default {
     state.resource = value
   },
   setDeviceConversationLog: function (state, value) {
-    state.device_conversation_logs = value
+    state.deviceConversationLogs = value
   },
   appendChatItem: function (state, value) {
-    let  date = new Date()
-    if(state.chatItems.length > 10){
+    let date = new Date()
+    if (state.chatItems.length > 10) {
       state.chatItems.shift()
     }
     state.chatItems.push({text : value, time: date.getHours() + ':' + date.getMinutes()})
+  },
+  setDeviceStat: function (state, value) {
+    state.deviceStat = value
   }
 }
 

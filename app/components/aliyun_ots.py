@@ -2,6 +2,7 @@ from tablestore import *
 from config import profile
 import time
 import json
+import logging
 
 
 class OTSTools:
@@ -9,6 +10,7 @@ class OTSTools:
         self.client = OTSClient(end_point=profile.aliyun_ots_endpoint, access_key_id=profile.aliyun_ak_id,
                                 access_key_secret=profile.aliyun_ak_secret, instance_name=profile.aliyun_ots_instance)
         self.table_name = profile.aliyun_ots_conversation_table
+        self.logger = logging.getLogger()
 
     def get_table_list(self):
         """
@@ -33,11 +35,12 @@ class OTSTools:
             data_dict_arr.append(data_dict_holder)
         return data_dict_arr
 
-    def get_last_limit_row(self, device='xiaoyun001', limit=60):
+    def get_last_limit_row(self, device=profile.aliyun_iot_device_name, limit=60):
         """
         获取最近的N条日志
         :return:
         """
+        self.logger.info('read last conversation logs from tablestore.')
         inclusive_start_primary_key = [('device', device), ('timestamp', INF_MAX)]
         exclusive_end_primary_key = [('device', device), ('timestamp', INF_MIN)]
         columns_to_get = []
@@ -52,7 +55,7 @@ class OTSTools:
         )
         return self._row_data_to_dict(row_list)
 
-    def get_hour_row(self, device='xiaoyun001', start_timestamp=INF_MAX, limit=60):
+    def get_hour_row(self, device=profile.aliyun_iot_device_name, start_timestamp=INF_MAX, limit=60):
         """
         获取某个时间点，往前推一个小时内的所有日志
         :param device:
@@ -60,6 +63,7 @@ class OTSTools:
         :param limit:
         :return:
         """
+        self.logger.info('hourly read conversation logs from tablestore.')
         end_timestamp = int(time.time() - 60 * 60) * 1000
         inclusive_start_primary_key = [('device', device), ('timestamp', start_timestamp)]
         exclusive_end_primary_key = [('device', device), ('timestamp', end_timestamp)]

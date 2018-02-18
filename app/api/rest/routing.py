@@ -26,6 +26,19 @@ class DeviceLog(BaseResource):
 
 
 @rest_resource
+class DeviceStat(BaseResource):
+    """ /api/resource/one """
+    endpoints = ['/device/stat']
+
+    def __init__(self):
+        self.iot_server = IotServer.get_instance()
+
+    def get(self):
+        data = self.iot_server.get_device_stat()
+        return {'errcode': 0, 'errmsg': 'ok', 'data': data}
+
+
+@rest_resource
 class DeviceChat(BaseResource):
     endpoints = ['/device/chat']
 

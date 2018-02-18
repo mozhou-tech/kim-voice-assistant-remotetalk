@@ -8,10 +8,10 @@ let $backend = axios.create({
 });
 
 $backend.interceptors.response.use(function (response) {
-    return response
-  }, function (error) {
-    console.log(error);
-    return Promise.reject(error)
+  return response
+}, function (error) {
+  console.log(error);
+  return Promise.reject(error)
 });
 
 export default {
@@ -21,15 +21,16 @@ export default {
     return $backend.get(`device/log`)
       .then(response => response.data)
   },
-
+  fetchDeviceStat () {
+    return $backend.get('/device/stat').then(response => response.data)
+  },
   sendChatMessage (message) {
-    console.log('send chat message.');
+    console.log('send chat message.')
     console.log(message)
     return $backend.post(`device/chat`, {data: message})
       .then(response => response.data)
   },
   listenChatMessageBack () {
-    return $backend.get('/device/chat/listen')
-        .then(response => response.data)
+    return $backend.get('/device/chat/listen').then(response => response.data)
   }
 }

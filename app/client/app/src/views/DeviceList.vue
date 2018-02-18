@@ -11,16 +11,20 @@
                   设备状态
                 </p>
                 <p class="card-header-icon">
-                  <span class="tag is-success">在线</span>
-                  <!--<span class="tag is-dark">Dark</span>-->
+                    <span v-if="deviceStat.Status == 'ONLINE'">
+                      <span class="tag is-success">在线</span>
+                    </span>
+                    <span v-else>
+                      <span class="tag">离线</span>
+                    </span>
                 </p>
               </header>
               <div class="card-content">
                 <div class="content">
                   <table class="table">
-                    <tr><td>设备编码</td><td>3425345jeskg898sdf</td></tr>
-                    <tr><td>设备名称</td><td>小云智能窗帘</td></tr>
-                    <tr><td>唤醒热词</td><td>小云</td></tr>
+                    <tr><td>设备编码</td><td>{{ deviceStat.DeviceId }}</td></tr>
+                    <tr><td>设备名称</td><td>{{ deviceStat.DeviceName }}</td></tr>
+                    <tr><td>最近在线</td><td>{{ deviceStat.LastOnlineTime }}</td></tr>
                   </table>
                 </div>
               </div>
@@ -38,6 +42,9 @@
 
 export default {
   name: 'Property',
+  mounted () {
+    this.fetchDeviceStat()
+  },
   components: {
   },
   data () {
@@ -46,8 +53,13 @@ export default {
     }
   },
   computed: {
-    isLoading () {
-      return this.$store.state.isLoading
+    deviceStat () {
+      return this.$store.state.deviceStat
+    }
+  },
+  methods: {
+    fetchDeviceStat () {
+      this.$store.dispatch('fetchDeviceStat')
     }
   }
 }

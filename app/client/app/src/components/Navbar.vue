@@ -5,7 +5,7 @@
         <img src="../assets/img/logo.png">
       </a>
       <a class="navbar-item" href="#">
-        小云智能语音助理
+        KIM智能语音助理
       </a>
     </div>
     <div class="navbar-menu">
