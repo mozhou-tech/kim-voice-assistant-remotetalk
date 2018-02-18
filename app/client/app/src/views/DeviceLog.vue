@@ -33,7 +33,7 @@
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">交互设备： {{ chosenItem.device }}</p>
+          <p class="modal-card-title">设备： {{ chosenItem.device }}</p>
           <button class="delete" aria-label="close" v-on:click="closeModal"></button>
         </header>
         <section class="modal-card-body">

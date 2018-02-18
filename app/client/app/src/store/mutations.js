@@ -20,6 +20,9 @@ export default {
   },
   setDeviceStat: function (state, value) {
     state.deviceStat = value
+  },
+  setChatPollingOpen: function (state, value) {
+    state.chatPollingOpen = value
   }
 }
 
