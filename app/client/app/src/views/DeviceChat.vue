@@ -23,6 +23,7 @@
               <div class="control" style="width: 70%;">
                 <input class="input" ref='chat_input' v-model="message" type="text" autofocus
                        v-on:keyup.13="sendChatMessage()"
+                       :readonly="chatInputReadonly"
                        placeholder="你想说点啥？">
               </div>
               <div class="control" style="width: 30%;">
@@ -44,7 +45,8 @@ export default {
   data () {
     return {
       message: '',
-      polling: false
+      polling: false,
+      chatInputReadonly: false
     }
   },
   mounted () {
@@ -57,6 +59,7 @@ export default {
       this.andChatItem(this.message)
       this.message = ''
       this.$refs.chat_input.focus()
+      this.chatInputReadonly = true
     },
     andChatItem: function (text) {
       this.$store.commit('appendChatItem', '我：' + text)
@@ -67,6 +70,7 @@ export default {
       if (this.$store.state.chatPollingOpen === false) {
         this.$store.commit('setChatPollingOpen', true)
         setInterval(function () {
+          _this.chatInputReadonly = false
           _this.$refs.chat_input.focus()
           _this.$store.dispatch('listenChatMessageBack')
         }, 1500)
