@@ -1,18 +1,23 @@
 import axios from 'axios'
-
+let baseUrl = ''
+if (process.env.NODE_ENV !== 'production') {
+    baseUrl = 'http://127.0.0.1:5000/api/'
+} else {
+    baseUrl = '/api/'
+}
 
 let $backend = axios.create({
-    baseURL: 'http://127.0.0.1:5000/api/',
+    baseURL: baseUrl,
     timeout: 5000,
     headers: {'Content-Type': 'application/json'}
-});
+})
 
 $backend.interceptors.response.use(function (response) {
   return response
 }, function (error) {
-  console.log(error);
+  console.log(error)
   return Promise.reject(error)
-});
+})
 
 export default {
 

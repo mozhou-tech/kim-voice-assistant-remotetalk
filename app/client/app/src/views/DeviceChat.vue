@@ -36,7 +36,7 @@
               </div>
               <div class="control" style="width: 30%;">
                 <button type="button" class="button is-info" v-on:click="sendChatMessage()" :disabled="deviceStat.Status!='ONLINE'">
-                  发送消息
+                  发射
                 </button>
               </div>
             </div>

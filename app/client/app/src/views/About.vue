@@ -15,9 +15,9 @@
                        <br>
                   <h4>项目介绍</h4>
                   <p>
-                    小云智能语音助理是一个开源的语音交互方案，灵感来自外国友人的<a href="https://github.com/jasperproject/jasper-client" target="_blank">"Jasper Voice Computing Platform"</a>。
-                      除客户端外，小云可以通过部署云端服务，提供远端APP控制和OpenAPI对接能力，增加可玩性。</p>
-                    <p>小云与阿里云的深度融合，使设备可以方便的使用云端能力，让开源智能音箱更加"智能化"，充满魅力。
+                    KIM智能语音助理是一个开源的语音交互方案，灵感来自外国友人的<a href="https://github.com/jasperproject/jasper-client" target="_blank">"Jasper Client"</a>。
+                      除客户端外，KIM可以通过部署云端服务，提供远端APP控制和OpenAPI对接能力，增加可玩性。</p>
+                    <p>KIM与阿里云的深度融合，使设备可以方便的使用云端能力，让开源智能音箱更加"智能化"，充满魅力。
                   </p>
                     <br>
                   <h4>作者信息</h4>
