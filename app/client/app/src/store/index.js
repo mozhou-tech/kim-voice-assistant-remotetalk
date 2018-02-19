@@ -23,6 +23,7 @@ export default new Vuex.Store({
     chatItems: [],
     deviceStat: {},
     chatPollingOpen: false,
-    statPollingOpen: false
+    statPollingOpen: false,
+    title: 'KIM智能语音助理'
   }
 })
