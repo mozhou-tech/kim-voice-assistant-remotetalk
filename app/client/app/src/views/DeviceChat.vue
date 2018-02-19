@@ -8,6 +8,14 @@
                 <p class="card-header-title">
                   设备会话
                 </p>
+                 <p class="card-header-icon">
+                    <span v-if="deviceStat.Status == 'ONLINE'">
+                      <span class="tag is-success">在线</span>
+                    </span>
+                    <span v-else>
+                      <span class="tag">离线</span>
+                    </span>
+                </p>
               </header>
               <div class="card-content">
                 <div class="content">
@@ -23,11 +31,11 @@
               <div class="control" style="width: 70%;">
                 <input class="input" ref='chat_input' v-model="message" type="text" autofocus
                        v-on:keyup.13="sendChatMessage()"
-                       :readonly="chatInputReadonly"
+                       :readonly="chatInputReadonly || deviceStat.Status!=='ONLINE'"
                        placeholder="你想说点啥？">
               </div>
               <div class="control" style="width: 30%;">
-                <button type="button" class="button is-info" v-on:click="sendChatMessage()">
+                <button type="button" class="button is-info" v-on:click="sendChatMessage()" :disabled="deviceStat.Status!='ONLINE'">
                   发送消息
                 </button>
               </div>
@@ -35,7 +43,6 @@
           </div>
       </section>
     </div>
-
   </section>
 </template>
 <script>
@@ -45,9 +52,7 @@ export default {
   data () {
     return {
       message: '',
-      polling: false,
-      chatInputReadonly: false,
-      chatTimer: ''
+      chatInputReadonly: false
     }
   },
   mounted () {
@@ -55,12 +60,13 @@ export default {
   },
   methods: {
     sendChatMessage: function () {
-      this.$store.dispatch('sendChatMessage', this.message)
-      console.log('send message: ' + this.message)
-      this.andChatItem(this.message)
-      this.message = ''
-      this.$refs.chat_input.focus()
-      this.chatInputReadonly = true
+      if (this.deviceStat.Status === 'ONLINE') {
+        this.$store.dispatch('sendChatMessage', this.message)
+        console.log('send message: ' + this.message)
+        this.andChatItem(this.message)
+        this.message = ''
+        this.$refs.chat_input.focus()
+      }
     },
     andChatItem: function (text) {
       this.$store.commit('appendChatItem', '我：' + text)
@@ -70,15 +76,10 @@ export default {
       let _this = this
       if (this.$store.state.chatPollingOpen === false) {
         this.$store.commit('setChatPollingOpen', true)
-        _this.chatTimer = setInterval(function () {
-          _this.chatInputReadonly = false
-          _this.$refs.chat_input.focus()
+        setInterval(function () {
           _this.$store.dispatch('listenChatMessageBack')
         }, 1500)
       }
-    },
-    destroyed () {
-      clearInterval(this.chatTimer)
     }
   },
   computed: {
@@ -87,6 +88,9 @@ export default {
     },
     chatItems () {
       return this.$store.state.chatItems
+    },
+    deviceStat () {
+      return this.$store.state.deviceStat
     }
   }
 }

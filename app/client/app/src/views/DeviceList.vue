@@ -22,8 +22,8 @@
               <div class="card-content">
                 <div class="content">
                   <table class="table">
-                    <tr><td>设备编码</td><td>{{ deviceStat.DeviceId || 'empty'}}</td></tr>
                     <tr><td>设备名称</td><td>{{ deviceStat.DeviceName }}</td></tr>
+                    <tr><td>设备编码</td><td>{{ deviceStat.DeviceId || 'empty'}}</td></tr>
                     <tr><td>最近在线</td><td>{{ deviceStat.LastOnlineTime }}</td></tr>
                   </table>
                 </div>
@@ -43,7 +43,7 @@
 export default {
   name: 'Property',
   mounted () {
-    this.fetchDeviceStat()
+
   },
   components: {
   },
@@ -58,9 +58,7 @@ export default {
     }
   },
   methods: {
-    fetchDeviceStat () {
-      this.$store.dispatch('fetchDeviceStat')
-    }
+
   }
 }
 </script>

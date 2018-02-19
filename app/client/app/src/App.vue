@@ -20,10 +20,32 @@
 <script>
 
 export default {
-  name: '',
+  name: 'Property',
+  mounted () {
+    this.pollingDeviceStat()
+    this.$store.dispatch('fetchDeviceStat')
+  },
+  components: {
+  },
+  data () {
+    return {
+
+    }
+  },
   computed: {
-    isLoading () {
-      return this.$store.state.isLoading
+    deviceStat () {
+      return this.$store.state.deviceStat
+    }
+  },
+  methods: {
+    pollingDeviceStat () {
+      let _this = this
+      if (this.$store.state.statPollingOpen === false) {
+        this.$store.commit('setStatPollingOpen', true)
+        _this.chatTimer = setInterval(function () {
+          _this.$store.dispatch('fetchDeviceStat')
+        }, 3000)
+      }
     }
   }
 }

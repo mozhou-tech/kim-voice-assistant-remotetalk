@@ -4,7 +4,7 @@
       <a class="navbar-item">
         <img src="../assets/img/logo.png" width="24px" height="24px">
       </a>
-      <a class="navbar-item" href="#">
+      <a class="navbar-item">
         KIM智能语音助理
       </a>
     </div>

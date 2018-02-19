@@ -22,6 +22,7 @@ export default new Vuex.Store({
     deviceConversationLogs: [],
     chatItems: [],
     deviceStat: {},
-    chatPollingOpen: false
+    chatPollingOpen: false,
+    statPollingOpen: false
   }
 })

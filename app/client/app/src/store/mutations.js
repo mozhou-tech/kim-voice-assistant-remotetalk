@@ -23,6 +23,9 @@ export default {
   },
   setChatPollingOpen: function (state, value) {
     state.chatPollingOpen = value
+  },
+  setStatPollingOpen: function (state, value) {
+    state.statPollingOpen = value
   }
 }
 
