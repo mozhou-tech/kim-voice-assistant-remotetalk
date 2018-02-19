@@ -16,7 +16,7 @@ export default {
     if (state.chatItems.length > 10) {
       state.chatItems.shift()
     }
-    state.chatItems.push({text : value, time: date.getHours() + ':' + date.getMinutes()})
+    state.chatItems.push({text: value, time: date.getHours() + ':' + date.getMinutes()})
   },
   setDeviceStat: function (state, value) {
     state.deviceStat = value
@@ -26,6 +26,8 @@ export default {
   },
   setStatPollingOpen: function (state, value) {
     state.statPollingOpen = value
+  },
+  setLastConversationAt: function (state, value) {
+    state.lastConversationAt = value
   }
 }
-

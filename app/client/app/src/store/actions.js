@@ -21,9 +21,14 @@ export default {
     })
   },
   listenChatMessageBack: function (context) {
-    backend.listenChatMessageBack().then((responseData) => {
-      if (responseData.errcode === 0 && responseData.data){
-        context.commit('appendChatItem', responseData.data.message)
+    backend.listenChatMessageBack(context.state.lastConversationAt).then((responseData) => {
+      if (responseData.errcode === 0 && responseData.data.logs) {
+        responseData.data.logs.forEach(function (elem, i) {
+          if (elem.mic === 'server' && elem.speaker === 'device') {
+            context.commit('appendChatItem', elem.content)
+            context.commit('setLastConversationAt', new Date().getTime())
+          }
+        })
       }
     })
   }

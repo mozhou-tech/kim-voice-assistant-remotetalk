@@ -35,7 +35,7 @@ export default {
     return $backend.post('device/chat', {data: message})
       .then(response => response.data)
   },
-  listenChatMessageBack () {
-    return $backend.get('/device/chat/listen').then(response => response.data)
+  listenChatMessageBack (timestamp) {
+    return $backend.get('/device/chat/listen?timestamp=' + timestamp).then(response => response.data)
   }
 }

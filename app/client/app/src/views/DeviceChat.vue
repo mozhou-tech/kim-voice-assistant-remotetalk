@@ -61,6 +61,7 @@ export default {
   methods: {
     sendChatMessage: function () {
       if (this.deviceStat.Status === 'ONLINE') {
+        this.$store.commit('setLastConversationAt', new Date().getTime())
         this.$store.dispatch('sendChatMessage', this.message)
         console.log('send message: ' + this.message)
         this.andChatItem(this.message)
@@ -78,14 +79,11 @@ export default {
         this.$store.commit('setChatPollingOpen', true)
         setInterval(function () {
           _this.$store.dispatch('listenChatMessageBack')
-        }, 1500)
+        }, 2000)
       }
     }
   },
   computed: {
-    isLoading () {
-      return this.$store.state.isLoading
-    },
     chatItems () {
       return this.$store.state.chatItems
     },

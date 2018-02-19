@@ -60,32 +60,19 @@ class DeviceChat(BaseResource):
 class DeviceChatListen(BaseResource):
     endpoints = ['/device/chat/listen']
 
+    def __init__(self):
+        self.ots_client = OTSTools.get_instance()
+
     def get(self):
         """
         读取聊天信息
         :return:
         """
-        with open(APP_PATH + '/data/client_report_data.json', mode='r+') as f:
-            read_str = f.read().strip()
-            if read_str:
-                data = json.loads(read_str)
-            else:
-                return {'errcode': 0, 'errmsg': 'ok', 'data': False}
-        with open(APP_PATH + '/data/client_report_data.json', mode='w') as f:
-            f.write('')
-        return {'errcode': 0, 'errmsg': 'ok', 'data': data}
+        args = request.args
+        # logs = ''
+        logs = self.ots_client.get_last_limit_row_by_timestamp(start_timestamp=int(args['timestamp']))
+        return {'errcode': 0, 'errmsg': 'ok', 'data': {'args': args, 'logs': logs}}
 
-    def post(self):
-        """
-        接受设备推送的反馈
-        :return:
-        """
-        ret = request.json.get('data')
-        if isinstance(ret, dict):
-            ret = json.dumps(ret)
-        with open(APP_PATH + '/data/client_report_data.json', mode='w+') as f:
-            f.write(ret)
-            return {'errcode': 0, 'errmsg': 'ok'}
 
 
 
