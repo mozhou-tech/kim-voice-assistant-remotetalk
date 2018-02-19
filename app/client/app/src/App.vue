@@ -44,7 +44,7 @@ export default {
         this.$store.commit('setStatPollingOpen', true)
         _this.chatTimer = setInterval(function () {
           _this.$store.dispatch('fetchDeviceStat')
-        }, 3000)
+        }, 4000)
       }
     }
   }
