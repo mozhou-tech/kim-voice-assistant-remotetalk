@@ -46,7 +46,8 @@ export default {
     return {
       message: '',
       polling: false,
-      chatInputReadonly: false
+      chatInputReadonly: false,
+      chatTimer: ''
     }
   },
   mounted () {
@@ -69,7 +70,7 @@ export default {
       let _this = this
       if (this.$store.state.chatPollingOpen === false) {
         this.$store.commit('setChatPollingOpen', true)
-        setInterval(function () {
+        _this.chatTimer = setInterval(function () {
           _this.chatInputReadonly = false
           _this.$refs.chat_input.focus()
           _this.$store.dispatch('listenChatMessageBack')
@@ -77,7 +78,7 @@ export default {
       }
     },
     destroyed () {
-      clearInterval()
+      clearInterval(this.chatTimer)
     }
   },
   computed: {

@@ -3,6 +3,7 @@
     <ul>
       <router-link tag="li" activeClass='is-active' :to="{ path: '/device/list'}"><a>我的设备</a></router-link>
       <router-link tag="li" activeClass='is-active' :to="{ path: '/about'}"><a>关于</a></router-link>
+      <router-link tag="li" activelass="is-active" :to="{ path: '/' }"><a>退出</a></router-link>
     </ul>
   </nav>
 </template>

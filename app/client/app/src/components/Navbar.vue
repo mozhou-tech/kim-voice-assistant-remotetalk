@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="#">
-        <img src="../assets/img/logo.png">
+      <a class="navbar-item">
+        <img src="../assets/img/logo.png" width="24px" height="24px">
       </a>
       <a class="navbar-item" href="#">
         KIM智能语音助理
