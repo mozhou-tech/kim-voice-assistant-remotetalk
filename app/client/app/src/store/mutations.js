@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import moment from 'moment'
 
 export default {
 
@@ -16,7 +17,7 @@ export default {
     if (state.chatItems.length > 400) {
       state.chatItems.shift()
     }
-    state.chatItems.push({text: value.content, time: date.getHours() + ':' + date.getMinutes(), speaker: value.speaker})
+    state.chatItems.push({text: value.content, time: moment.unix(value.timestamp/1000).format('hh:mm'), speaker: value.speaker})
   },
   setDeviceStat: function (state, value) {
     state.deviceStat = value

@@ -30,8 +30,6 @@ export default {
     return $backend.get('/device/stat').then(response => response.data)
   },
   sendChatMessage (message) {
-    console.log('send chat message.')
-    console.log(message)
     return $backend.post('device/chat', {data: message})
       .then(response => response.data)
   },
