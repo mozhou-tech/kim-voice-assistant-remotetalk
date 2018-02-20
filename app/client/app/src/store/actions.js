@@ -25,7 +25,7 @@ export default {
       if (responseData.errcode === 0 && responseData.data.logs) {
         responseData.data.logs.forEach(function (elem, i) {
           if (elem.mic === 'server' && elem.speaker === 'device') {
-            context.commit('appendChatItem', elem.content)
+            context.commit('appendChatItem', {content: elem.content, speaker: elem.speaker})
             context.commit('setLastConversationAt', new Date().getTime())
           }
         })

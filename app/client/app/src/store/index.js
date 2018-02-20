@@ -25,6 +25,6 @@ export default new Vuex.Store({
     chatPollingOpen: false,
     statPollingOpen: false,
     title: 'KIM智能语音助理',
-    lastConversationAt: 0
+    lastConversationAt: 1509024296030
   }
 })

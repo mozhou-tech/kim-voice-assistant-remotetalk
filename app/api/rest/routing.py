@@ -74,8 +74,6 @@ class DeviceChatListen(BaseResource):
         return {'errcode': 0, 'errmsg': 'ok', 'data': {'args': args, 'logs': logs}}
 
 
-
-
 @rest_resource
 class SecureResourceOne(SecureResource):
     """ /api/resource/two """

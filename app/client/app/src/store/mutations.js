@@ -13,10 +13,10 @@ export default {
   },
   appendChatItem: function (state, value) {
     let date = new Date()
-    if (state.chatItems.length > 10) {
+    if (state.chatItems.length > 400) {
       state.chatItems.shift()
     }
-    state.chatItems.push({text: value, time: date.getHours() + ':' + date.getMinutes()})
+    state.chatItems.push({text: value.content, time: date.getHours() + ':' + date.getMinutes(), speaker: value.speaker})
   },
   setDeviceStat: function (state, value) {
     state.deviceStat = value
