@@ -16,7 +16,7 @@ export default {
     })
   },
   sendChatMessage: function (context, message) {
-    backend.sendChatMessage(message).then((responseData) => {
+    backend.sendChatMessage(message, context.state.apiToken).then((responseData) => {
       console.log(responseData)
     })
   },
