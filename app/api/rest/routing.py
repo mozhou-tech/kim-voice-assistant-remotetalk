@@ -25,7 +25,7 @@ class Auth(BaseResource):
         if check_passwd(request.json['passwd']):
             return {'errcode': 0, 'errmsg': 'ok'}
         else:
-            return {'errcode': -1, 'errmsg': 'auth error.'}
+            return {'errcode': -1, 'errmsg': 'Auth error, check your password.'}
 
 
 @rest_resource

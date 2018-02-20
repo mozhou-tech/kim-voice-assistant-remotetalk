@@ -12,16 +12,18 @@
               </header>
               <div class="card-content">
                 <div class="content">
-                       <br>
-                  <h4>项目介绍</h4>
+                    <figure class="image" style="width: 40%;margin: 26px 30%;">
+                        <img src="/dist/logo.png" alt="">
+                         <figcaption style="font-size: 16px;font-style: normal;color: #3d3d3d;margin-top: 8px;">KIM智能语音助理</figcaption>
+                    </figure>
                   <p>
+                  <h4>项目介绍</h4>
                     KIM智能语音助理是一个开源的语音交互方案，灵感来自外国友人的<a href="https://github.com/jasperproject/jasper-client" target="_blank">"Jasper Client"</a>。
                       除客户端外，KIM可以通过部署云端服务，提供远端APP控制和OpenAPI对接能力，增加可玩性。</p>
                     <p>KIM与阿里云的深度融合，使设备可以方便的使用云端能力，让开源智能音箱更加"智能化"，充满魅力。
                   </p>
                     <br>
                   <h4>作者信息</h4>
-
                   <p>
                     姓名：刘远程<br/>
                     邮箱：<a href="mailto:tenstone@foxmail.com" target="_blank">tenstone@foxmail.com</a><br/>
@@ -71,7 +73,11 @@
 
 export default {
   name: 'Property',
-
+  mounted () {
+    if (this.$store.state.isAuth === false) {
+      this.$router.push('/')
+    }
+  },
   data () {
     return {
 

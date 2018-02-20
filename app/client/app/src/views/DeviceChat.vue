@@ -32,7 +32,9 @@
                         <span v-if="item.speaker === 'user'">You</span>
                     </div>
                 </li>
-                <li v-if="chatItems.length === 0">暂无对话，请发送消息给我吧</li>
+                <li v-if="chatItems.length === 0" style="width: 100%;text-align: center;">
+                    暂无对话，请发送消息给我吧
+                </li>
                </ul>
             </div>
           </div>

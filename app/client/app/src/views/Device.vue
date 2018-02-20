@@ -13,6 +13,11 @@
 
 export default {
   name: 'Property',
+  mounted () {
+    if (this.$store.state.isAuth === false) {
+      this.$router.push('/')
+    }
+  },
   components: {
   },
   data () {

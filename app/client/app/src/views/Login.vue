@@ -10,7 +10,7 @@
        <div class="level-item has-text-centered is-fullwidth">
             <div class="field has-addons">
               <div class="control">
-                <input class="input is-fullwidth" v-on:keyup.13="checkPasswd()" v-model="passwd" type="password" placeholder="访问密码">
+                <input class="input is-fullwidth" v-on:keyup.13="checkPasswd()" v-model="passwd" type="password" placeholder="密码">
               </div>
               <div class="control">
                 <a class="button is-black" v-on:click="checkPasswd()">
@@ -23,7 +23,9 @@
     <div class="level">
       <div class="level-item title">
         <p> {{ $store.state.title }} </p>
+
       </div>
+      <div class="level-item"><p> {{ errmsg }} </p></div>
     </div>
 </section>
 </template>
@@ -36,7 +38,8 @@ export default {
   name: 'Login',
   data () {
     return {
-      passwd: '1'
+      passwd: '',
+      errmsg: ''
     }
   },
   mounted () {
@@ -51,7 +54,7 @@ export default {
           this.$store.commit('setIsAuth', true)
           this.$router.push('/device')
         } else {
-          console.log('login error.')
+          this.errmsg = responseData.errmsg
           this.$store.commit('setIsAuth', false)
         }
       })

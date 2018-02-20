@@ -2,16 +2,13 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
-        <img src="../assets/img/logo.png" width="24px" height="24px">
+        <div class="image is-24x24" style="display: block;">
+          <img src="../assets/img/logo.png" style="height: 24px;">
+        </div>
       </a>
       <a class="navbar-item">
-        KIM智能语音助理
+        KIM智能语音助理&nbsp;&nbsp;<small> {{version}}</small>
       </a>
-    </div>
-    <div class="navbar-menu">
-      <div class="navbar-end">
-        <span class="navbar-item is-size-7 is-dark">{{version}}</span>
-      </div>
     </div>
   </nav>
 </template>
@@ -21,7 +18,11 @@ export default {
   name: 'Navbar',
   data () {
     return {
-      version: this.$store.state.version
+    }
+  },
+  computed: {
+    version: function () {
+      return this.$store.state.version
     }
   }
 }
