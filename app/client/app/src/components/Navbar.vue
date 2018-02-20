@@ -7,7 +7,7 @@
         </div>
       </a>
       <a class="navbar-item">
-        KIM智能语音助理&nbsp;&nbsp;<small> {{version}}</small>
+        {{ title }}&nbsp;&nbsp;<small> {{version}}</small>
       </a>
     </div>
   </nav>
@@ -23,6 +23,9 @@ export default {
   computed: {
     version: function () {
       return this.$store.state.version
+    },
+    title: function () {
+      return this.$store.state.title
     }
   }
 }

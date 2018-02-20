@@ -26,7 +26,9 @@ export default new Vuex.Store({
     deviceStat: {},
     chatPollingOpen: false,
     statPollingOpen: false,
-    title: 'KIM智能语音助理',
+    title: 'Kim 智能语音助理',
+    short_title: 'Kim',
+    title_desc: 'Kim，你的私人助理',
     lastConversationAt: 0
   }
 })

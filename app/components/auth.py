@@ -1,5 +1,4 @@
-from config.path import IOT_SHADOW_PATH
-import json
+from app.components.iot_shadow_cfg import get_shadow_cfg
 
 
 def check_passwd(input_passwd):
@@ -7,6 +6,5 @@ def check_passwd(input_passwd):
     检查密码是否正确
     :return:
     """
-    with open(IOT_SHADOW_PATH, mode='r') as f:
-        shadow_dict = json.loads(f.read())
-    return shadow_dict['state']['reported']['passwd'] == input_passwd
+    shadow_dict = get_shadow_cfg()
+    return shadow_dict['cfg_remote_control_password'] == input_passwd

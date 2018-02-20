@@ -6,7 +6,7 @@ import SubNavbar from './components/SubNavbar'
 
 import DeviceChat from './views/DeviceChat'
 import DeviceLog from './views/DeviceLog'
-import DeviceList from './views/DeviceList'
+import DeviceStat from './views/DeviceStat'
 import Device from './views/Device'
 import Login from './views/Login'
 import About from './views/About'
@@ -23,15 +23,15 @@ export default new Router({
     },
     {
         path: '/device',
-        redirect:'/device/list',
+        redirect:'/device/stat',
         components: {
           navbar: Navbar,
           subnavbar: SubNavbar,
           main: Device
         },
         children:[{
-          path: 'list',
-          component: DeviceList
+          path: 'stat',
+          component: DeviceStat
           }, {
           path: 'chat',
           component: DeviceChat

@@ -21,7 +21,7 @@
                <ul style="list-style-type: none;" id="chat-wrap">
                 <li v-for="item in chatItems" :class="'chat-item '+item.speaker">
                     <div class="chat-avatar flex-item">
-                        <span v-if="item.speaker === 'device'">Kim</span>
+                        <span v-if="item.speaker === 'device'">{{ deviceStat.cfg_myname || 'Nan' }}</span>
                     </div>
                     <div class="chat-device-arrow flex-item"></div>
                     <div class="chat-text flex-item">

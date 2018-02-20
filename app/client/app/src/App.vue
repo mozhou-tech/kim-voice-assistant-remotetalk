@@ -24,6 +24,7 @@ export default {
   mounted () {
     this.pollingDeviceStat()
     this.$store.dispatch('fetchDeviceStat')
+    document.title = this.$store.state.title + ' —— 为你打造的私人助理'
   },
   components: {
   },
@@ -44,7 +45,7 @@ export default {
         this.$store.commit('setStatPollingOpen', true)
         _this.chatTimer = setInterval(function () {
           _this.$store.dispatch('fetchDeviceStat')
-        }, 4000)
+        }, 5000)
       }
     }
   }

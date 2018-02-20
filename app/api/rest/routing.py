@@ -12,6 +12,7 @@ from app.components.aliyun_iot import IotServer
 from config.path import APP_PATH
 import json
 from app.components.auth import check_passwd
+from app.components.iot_shadow_cfg import get_shadow_cfg
 
 
 @rest_resource
@@ -22,7 +23,7 @@ class Auth(BaseResource):
         pass
 
     def post(self):
-        if check_passwd(request.json['passwd']):
+        if check_passwd(request.get_json()['passwd']):
             return {'errcode': 0, 'errmsg': 'ok'}
         else:
             return {'errcode': -1, 'errmsg': 'Auth error, check your password.'}
@@ -50,6 +51,9 @@ class DeviceStat(BaseResource):
 
     def get(self):
         data = self.iot_server.get_device_stat()
+        data = dict(get_shadow_cfg().items() | data.items())
+        del data['cfg_remote_control_password']
+        del data['cfg_remote_control_api_token']
         return {'errcode': 0, 'errmsg': 'ok', 'data': data}
 
 
@@ -64,7 +68,7 @@ class DeviceChat(BaseResource):
         return request.args
 
     def post(self):
-        ret = self.iot_server.send_device_message(request.json['data'])
+        ret = self.iot_server.send_device_message(request.get_json()['data'])
         if ret:
             return {'errcode': 0, 'errmsg': 'ok'}
         else:

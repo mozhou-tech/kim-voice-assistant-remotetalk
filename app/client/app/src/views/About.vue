@@ -14,14 +14,26 @@
                 <div class="content">
                     <figure class="image" style="width: 40%;margin: 26px 30%;">
                         <img src="/dist/logo.png" alt="">
-                         <figcaption style="font-size: 16px;font-style: normal;color: #3d3d3d;margin-top: 8px;">KIM智能语音助理</figcaption>
+                         <figcaption style="font-size: 16px;font-style: normal;color: #3d3d3d;margin-top: 8px;">{{ title_desc }}</figcaption>
                     </figure>
                   <p>
                   <h4>项目介绍</h4>
-                    KIM智能语音助理是一个开源的语音交互方案，灵感来自外国友人的<a href="https://github.com/jasperproject/jasper-client" target="_blank">"Jasper Client"</a>。
-                      除客户端外，KIM可以通过部署云端服务，提供远端APP控制和OpenAPI对接能力，增加可玩性。</p>
-                    <p>KIM与阿里云的深度融合，使设备可以方便的使用云端能力，让开源智能音箱更加"智能化"，充满魅力。
-                  </p>
+                    <p>"{{ title }}"是一个开源的语音交互方案，灵感来自外国友人的<a href="https://github.com/jasperproject/jasper-client" target="_blank">"Jasper Client"</a>。
+                      除客户端外，{{ short_title }}可以通过部署云端服务，提供远端APP控制和API接入能力，增加可玩性。
+                    <p>{{ short_title }}与阿里云的深度融合，使设备对云端能力触手可及，让你的私人语音助理更加"智能化"，充满魅力。
+                    <p>除此之外，{{ short_title }}的目标是将智能语音助理与智能家居系统无缝结合，我们已经支持著名开源智能家居系统<a href="https://home-assistant.io/" target="_blank">"HomeAssistant"</a>，支持小米、博联等主流品牌的智能家居设备。
+                    <p>项目地址：
+                    <ul>
+                    <li>
+                        <a href="https://github.com/tenstone/kim-voice-assistant-iot-client">语音助理设备端</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/tenstone/kim-voice-assistant-server">远程会话端</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/tenstone/kim-voice-assistant-dock">Docker安装镜像</a>
+                    </li>
+                </ul>
                     <br>
                   <h4>作者信息</h4>
                   <p>
@@ -56,14 +68,13 @@
                   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
                   SOFTWARE.
                   </p>
-
+                    <br>
                 </div>
               </div>
               <footer class="card-footer">
 
               </footer>
             </div>
-
         </section>
     </div>
 
@@ -84,8 +95,14 @@ export default {
     }
   },
   computed: {
-    isLoading () {
-      return this.$store.state.isLoading
+    title: function () {
+      return this.$store.state.title
+    },
+    short_title: function () {
+      return this.$store.state.short_title
+    },
+    title_desc: function () {
+      return this.$store.state.title_desc
     }
   }
 }

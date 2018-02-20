@@ -22,7 +22,7 @@
     </div>
     <div class="level">
       <div class="level-item title">
-        <p> {{ $store.state.title }} </p>
+        <p> {{ $store.state.title_desc }} </p>
 
       </div>
       <div class="level-item"><p> {{ errmsg }} </p></div>
