@@ -5,6 +5,7 @@ import store from './store'
 import App from './App.vue'
 import './filters.js'
 import Mixins from './mixins.js'
+import backend from './store/backend'
 
 Vue.mixin(Mixins)
 
@@ -14,5 +15,5 @@ let vue = new Vue({
   store,
   template: '<App/>',
   mixins: [Mixins],
-  components: { App }
+  components: { App, backend }
 })

@@ -30,5 +30,8 @@ export default {
   },
   setLastConversationAt: function (state, value) {
     state.lastConversationAt = value
+  },
+  setIsAuth: function (state, value) {
+    state.isAuth = value
   }
 }

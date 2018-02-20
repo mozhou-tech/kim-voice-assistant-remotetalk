@@ -17,6 +17,7 @@ export default new Vuex.Store({
   actions,
   getters,
   state: {
+    isAuth: false,
     resource: null,
     isLoading: false,
     deviceConversationLogs: [],

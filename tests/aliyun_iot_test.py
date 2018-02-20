@@ -21,6 +21,11 @@ class TestComponentsAliyunIOT(unittest.TestCase):
         """
         self.iot_server.send_device_message('马云')
 
+    def test_sync_iot_shadow(self):
+        r = self.iot_server.get_iot_shadow()
+        print(r)
+        pass
+
 
 if __name__ == '__main__':
     logger.init(info=True)

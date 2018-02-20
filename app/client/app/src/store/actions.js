@@ -31,5 +31,12 @@ export default {
         })
       }
     })
+  },
+  checkPasswd: function (context) {
+    backend.checkPasswd().then((responseData) => {
+      if (responseData.errcode === 0) {
+        context.commit('isAuth', true)
+      }
+    })
   }
 }

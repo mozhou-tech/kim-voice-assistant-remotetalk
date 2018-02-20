@@ -1,8 +1,8 @@
 
 from aliyunsdkcore import client
 from aliyunsdkiot.request.v20170420 import RegistDeviceRequest
-from aliyunsdkiot.request.v20170420 import PubRequest, UpdateDeviceShadowRequest, BatchGetDeviceStateRequest
-from config import profile
+from aliyunsdkiot.request.v20170420 import PubRequest, UpdateDeviceShadowRequest, BatchGetDeviceStateRequest, GetDeviceShadowRequest
+from config import profile,path
 import logging, json, base64
 
 
@@ -40,7 +40,7 @@ class IotServer:
     def get_device_stat(self):
         """
         获取设备状态
-        :return:
+        :return: String
         """
         self._logger.info('restful get device stat')
         self.request = BatchGetDeviceStateRequest.BatchGetDeviceStateRequest()
@@ -51,6 +51,24 @@ class IotServer:
             return result["DeviceStatusList"]["DeviceStatus"][0]
         else:
             return 'error'
+
+    def get_iot_shadow(self):
+        """
+        从IoThub上获取设备影子
+        :return:
+        """
+        self._logger.info('get iot shadow.')
+        self.request = GetDeviceShadowRequest.GetDeviceShadowRequest()
+        self.request.set_ProductKey(profile.aliyun_iot_product_key)
+        self.request.set_DeviceName(profile.aliyun_iot_device_name)
+        result = json.loads(self.clt.do_action_with_exception(self.request).decode('utf8'))
+        if result["Success"]:
+            with open(path.IOT_SHADOW_PATH,mode='w') as f:
+                f.write(result['ShadowMessage'])
+            return result['ShadowMessage']
+        else:
+            return 'error'
+
 
     @classmethod
     def get_instance(cls):

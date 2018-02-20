@@ -8,7 +8,7 @@
               设备会话
             </p>
              <p class="card-header-icon">
-                <span v-if="deviceStat.Status == 'ONLINE'">
+                <span v-if="deviceStat.Status === 'ONLINE'">
                   <span class="tag is-success">在线</span>
                 </span>
                 <span v-else>
@@ -76,7 +76,6 @@ export default {
       let _this = this
       setTimeout(function () {
         _this.pageHeight = window.innerHeight
-        console.log(_this.pageHeight)
       }, delay)
     },
     chatBoxScrollToBottom: function (delay) { // 两天窗口滚动到底部

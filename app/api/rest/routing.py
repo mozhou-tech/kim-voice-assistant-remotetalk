@@ -11,6 +11,21 @@ from app.components.aliyun_ots import OTSTools
 from app.components.aliyun_iot import IotServer
 from config.path import APP_PATH
 import json
+from app.components.auth import check_passwd
+
+
+@rest_resource
+class Auth(BaseResource):
+    endpoints = ['/auth']
+
+    def __init__(self):
+        pass
+
+    def post(self):
+        if check_passwd(request.json['passwd']):
+            return {'errcode': 0, 'errmsg': 'ok'}
+        else:
+            return {'errcode': -1, 'errmsg': 'auth error.'}
 
 
 @rest_resource
@@ -49,7 +64,7 @@ class DeviceChat(BaseResource):
         return request.args
 
     def post(self):
-        ret = self.iot_server.send_device_message(request.json.get('data'))
+        ret = self.iot_server.send_device_message(request.json['data'])
         if ret:
             return {'errcode': 0, 'errmsg': 'ok'}
         else:
@@ -72,13 +87,4 @@ class DeviceChatListen(BaseResource):
         # logs = ''
         logs = self.ots_client.get_last_limit_row_by_timestamp(start_timestamp=int(args['timestamp']))
         return {'errcode': 0, 'errmsg': 'ok', 'data': {'args': args, 'logs': logs}}
-
-
-@rest_resource
-class SecureResourceOne(SecureResource):
-    """ /api/resource/two """
-    endpoints = ['/resource/two/<string:resource_id>']
-
-    def get(self, resource_id):
-        return {'name': 'Resource Two', 'data': resource_id}
 

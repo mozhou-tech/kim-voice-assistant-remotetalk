@@ -35,5 +35,8 @@ export default {
   },
   listenChatMessageBack (timestamp) {
     return $backend.get('/device/chat/listen?timestamp=' + timestamp).then(response => response.data)
+  },
+  checkPasswd (passwd) {
+    return $backend.post('/auth', {passwd: passwd}).then(response => response.data)
   }
 }
