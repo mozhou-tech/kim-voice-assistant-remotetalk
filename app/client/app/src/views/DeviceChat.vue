@@ -128,7 +128,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.card-content{padding: 8px;margin: 0}
+.card-content{padding: 8px;margin: 0;padding-bottom: 18px;}
 .card .content{
    overflow: scroll;
 }
