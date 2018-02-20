@@ -3,13 +3,13 @@ import backend from './backend'
 
 export default {
 
-  fetchDeviceConversationLog: function  (context) {
-    backend.fetchDeviceConversationLog().then((responseData) => {
+  fetchDeviceConversationLog: function (context) {
+    backend.fetchDeviceConversationLog(context.state.apiToken).then((responseData) => {
       context.commit('setDeviceConversationLog', responseData)
     })
   },
   fetchDeviceStat: function (context) {
-    backend.fetchDeviceStat().then((responseData) => {
+    backend.fetchDeviceStat(context.state.apiToken).then((responseData) => {
       if (responseData.errcode === 0) {
         context.commit('setDeviceStat', responseData.data)
       }
@@ -21,7 +21,7 @@ export default {
     })
   },
   listenChatMessageBack: function (context) {
-    backend.listenChatMessageBack(context.state.lastConversationAt).then((responseData) => {
+    backend.listenChatMessageBack(context.state.lastConversationAt, context.state.apiToken).then((responseData) => {
       if (responseData.errcode === 0 && responseData.data.logs) {
         responseData.data.logs.forEach(function (elem, i) {
           if (elem.mic === 'server' && elem.speaker === 'device') {

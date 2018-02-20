@@ -20,23 +20,22 @@ $backend.interceptors.response.use(function (response) {
 })
 
 export default {
-
-  fetchDeviceConversationLog () {
-    console.log('get device conversation logs');
-    return $backend.get(`device/log`)
+  fetchDeviceConversationLog (token) {
+    return $backend.get(`device/log?token=` + token).then(response => response.data)
+  },
+  fetchDeviceStat (token) {
+    return $backend.get('/device/stat?token=' + token).then(response => response.data)
+  },
+  sendChatMessage (message, token) {
+    return $backend.post('device/chat?token=' + token, {data: message})
       .then(response => response.data)
   },
-  fetchDeviceStat () {
-    return $backend.get('/device/stat').then(response => response.data)
-  },
-  sendChatMessage (message) {
-    return $backend.post('device/chat', {data: message})
-      .then(response => response.data)
-  },
-  listenChatMessageBack (timestamp) {
-    return $backend.get('/device/chat/listen?timestamp=' + timestamp).then(response => response.data)
+  listenChatMessageBack (timestamp, token) {
+    return $backend.get('/device/chat/listen?timestamp=' + timestamp + '&token=' + token).then(response => response.data)
   },
   checkPasswd (passwd) {
-    return $backend.post('/auth', {passwd: passwd}).then(response => response.data)
+    return $backend.post('/auth', {
+      passwd: passwd
+    }).then(response => response.data)
   }
 }

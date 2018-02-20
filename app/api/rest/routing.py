@@ -11,8 +11,8 @@ from app.components.aliyun_ots import OTSTools
 from app.components.aliyun_iot import IotServer
 from config.path import APP_PATH
 import json
-from app.components.auth import check_passwd
-from app.components.iot_shadow_cfg import get_shadow_cfg
+from app.components.auth import check_passwd, check_api_token
+from app.components.iot_shadow_cfg import read_shadow_cfg_from_cache
 
 
 @rest_resource
@@ -24,7 +24,9 @@ class Auth(BaseResource):
 
     def post(self):
         if check_passwd(request.get_json()['passwd']):
-            return {'errcode': 0, 'errmsg': 'ok'}
+            return {'errcode': 0, 'errmsg': 'ok', 'data': {
+                'api_token': read_shadow_cfg_from_cache()['cfg_remote_control_api_token']
+            }}
         else:
             return {'errcode': -1, 'errmsg': 'Auth error, check your password.'}
 
@@ -38,6 +40,9 @@ class DeviceLog(BaseResource):
         self.ots_client = OTSTools.get_instance()
 
     def get(self):
+        if not 'token' in request.args.keys() or not check_api_token(request.args['token']):
+            return {'errcode': -1, 'errmsg': 'wrong api token.'}
+
         return self.ots_client.get_last_limit_row()
 
 
@@ -50,8 +55,11 @@ class DeviceStat(BaseResource):
         self.iot_server = IotServer.get_instance()
 
     def get(self):
+        if not 'token' in request.args.keys() or not check_api_token(request.args['token']):
+            return {'errcode': -1, 'errmsg': 'wrong api token.'}
+
         data = self.iot_server.get_device_stat()
-        data = dict(get_shadow_cfg().items() | data.items())
+        data = dict(read_shadow_cfg_from_cache().items() | data.items())
         del data['cfg_remote_control_password']
         del data['cfg_remote_control_api_token']
         return {'errcode': 0, 'errmsg': 'ok', 'data': data}
@@ -64,10 +72,10 @@ class DeviceChat(BaseResource):
     def __init__(self):
         self.iot_server = IotServer.get_instance()
 
-    def get(self):
-        return request.args
-
     def post(self):
+        if not 'token' in request.args.keys() or not check_api_token(request.args['token']):
+            return {'errcode': -1, 'errmsg': 'wrong api token.'}
+
         ret = self.iot_server.send_device_message(request.get_json()['data'])
         if ret:
             return {'errcode': 0, 'errmsg': 'ok'}
@@ -87,6 +95,9 @@ class DeviceChatListen(BaseResource):
         读取聊天信息
         :return:
         """
+        if not 'token' in request.args.keys() or not check_api_token(request.args['token']):
+            return {'errcode': -1, 'errmsg': 'wrong api token.'}
+
         args = request.args
         # logs = ''
         logs = self.ots_client.get_last_limit_row_by_timestamp(start_timestamp=int(args['timestamp']))

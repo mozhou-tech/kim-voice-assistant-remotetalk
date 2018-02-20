@@ -33,5 +33,8 @@ export default {
   },
   setIsAuth: function (state, value) {
     state.isAuth = value
+  },
+  setApiToken: function (state, value) {
+    state.apiToken = value
   }
 }

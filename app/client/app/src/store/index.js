@@ -18,6 +18,7 @@ export default new Vuex.Store({
   getters,
   state: {
     isAuth: false,
+    apiToken: '',
     version: '1.0',
     resource: null,
     isLoading: false,

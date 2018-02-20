@@ -33,6 +33,11 @@ export default {
 
     }
   },
+  watch: {
+    '$store.state.apiToken': function () {
+      this.$store.dispatch('fetchDeviceStat')
+    }
+  },
   computed: {
     deviceStat () {
       return this.$store.state.deviceStat

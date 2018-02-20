@@ -21,11 +21,10 @@
       </div>
     </div>
     <div class="level">
-      <div class="level-item title">
+      <div class="level-item title has-text-centered is-fullwidth">
         <p> {{ $store.state.title_desc }} </p>
-
       </div>
-      <div class="level-item"><p> {{ errmsg }} </p></div>
+      <div class="level-item has-text-centered is-fullwidth"><p style="text-align: center;"> {{ errmsg }} </p></div>
     </div>
 </section>
 </template>
@@ -51,6 +50,7 @@ export default {
     checkPasswd: function () {
       backend.checkPasswd(this.passwd).then((responseData) => {
         if (responseData.errcode === 0) {
+          this.$store.commit('setApiToken', responseData.data.api_token)
           this.$store.commit('setIsAuth', true)
           this.$router.push('/device')
         } else {

@@ -45,9 +45,7 @@
 export default {
   name: 'Property',
   mounted () {
-
-  },
-  components: {
+    console.log(this.$store.state.apiToken)
   },
   data () {
     return {
