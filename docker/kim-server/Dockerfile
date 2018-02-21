@@ -12,7 +12,7 @@ RUN git clone $PROJECT_GIT_PATH
 
 # 处理项目文件
 WORKDIR $BASE_PATH/$PROJECT_DIR
-# COPY docker/kim-server .
+COPY . .
 
 RUN git pull \
     && apk --no-cache add uwsgi-python uwsgi-python3\
