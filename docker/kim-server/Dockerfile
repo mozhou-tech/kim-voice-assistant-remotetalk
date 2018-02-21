@@ -14,11 +14,12 @@ RUN git clone $PROJECT_GIT_PATH
 WORKDIR $BASE_PATH/$PROJECT_DIR
 COPY . .
 
-RUN chmod +x build.sh \
+RUN cp setting-example.yaml setting.yaml \
     && cp -f nginx.conf /etc/nginx/nginx.conf \
     && rm -f /etc/nginx/conf.d/default.conf \
     && git pull \
-    && apk --no-cache add uwsgi-python uwsgi-python3\
+    # uwsgi python plugin
+    && apk --no-cache add uwsgi-python3 \
     && pip install --no-cache-dir -r requirements.txt
 
 
@@ -27,10 +28,10 @@ WORKDIR $BASE_PATH/$PROJECT_DIR/app/client/app
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org \
     && cnpm install \
     && npm run build \
-    && rm -rf node_modules \
-    && rm -f /etc/nginx/config/default.conf
+    && rm -rf node_modules
 
 WORKDIR $BASE_PATH/$PROJECT_DIR
+RUN chown nginx:nginx * -R && chmod +x start.sh
 
-CMD "/usr/sbin/nginx"
-CMD  "uwsgi --uid 100 --ini /app/"$PROJECT_DIR"/uwsgi.ini"
+CMD "./start.sh"
+
