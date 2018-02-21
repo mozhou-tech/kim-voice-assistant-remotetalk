@@ -12,10 +12,12 @@ RUN git clone $PROJECT_GIT_PATH
 
 # 处理项目文件
 WORKDIR $BASE_PATH/$PROJECT_DIR
-COPY . .
+# COPY docker/kim-server .
 
 RUN git pull \
+    && apk --no-cache add uwsgi-python uwsgi-python3\
     && pip install --no-cache-dir -r requirements.txt
+
 
 WORKDIR $BASE_PATH/$PROJECT_DIR/app/client/app
 
@@ -23,10 +25,9 @@ RUN npm install -g cnpm --registry=https://registry.npm.taobao.org \
     && cnpm install \
     && npm run build \
     && rm -rf node_modules \
-    && rm -f /etc/nginx/conf.d/default.conf \
-    && rm -f /etc/nginx/conf.d/nginx.conf
+    && rm -f /etc/nginx/config/default.conf
 
 WORKDIR $BASE_PATH/$PROJECT_DIR
 
 CMD "/usr/sbin/nginx"
-CMD [ "uwsgi", "--uid" , "100"]
+CMD  "uwsgi --uid 100 --ini /app/"$PROJECT_DIR"/uwsgi.ini"
