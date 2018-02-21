@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
+FROM tiangolo/uwsgi-nginx:python3.6-alpine3.7
 LABEL author=tenstone
 ENV NODE_VERSION 9.4.0
 
