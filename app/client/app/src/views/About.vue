@@ -30,9 +30,6 @@
                     <li>
                         <a href="https://github.com/tenstone/kim-voice-assistant-server">远程会话端</a>
                     </li>
-                    <li>
-                        <a href="https://github.com/tenstone/kim-voice-assistant-dock">Docker安装镜像</a>
-                    </li>
                 </ul>
                     <br>
                   <h4>作者信息</h4>
