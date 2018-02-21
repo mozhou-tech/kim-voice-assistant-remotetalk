@@ -14,7 +14,10 @@ RUN git clone $PROJECT_GIT_PATH
 WORKDIR $BASE_PATH/$PROJECT_DIR
 COPY . .
 
-RUN git pull \
+RUN chmod +x build.sh \
+    && cp -f nginx.conf /etc/nginx/nginx.conf \
+    && rm -f /etc/nginx/conf.d/default.conf \
+    && git pull \
     && apk --no-cache add uwsgi-python uwsgi-python3\
     && pip install --no-cache-dir -r requirements.txt
 
