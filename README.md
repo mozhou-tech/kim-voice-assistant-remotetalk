@@ -22,7 +22,7 @@ Kim Voice Assistant是一款开源智能语音助理（智能音箱），灵感�
 | Kim Voice Assistant Iot Client | Kim设备端 | [Client](https://github.com/tenstone/kim-voice-assistant-iot-client) |
 | Kim Voice Assistant Server | Kim远程会话端 | [Server](https://github.com/tenstone/kim-voice-assistant-server) |
 
-当前模块为：Kim Voice Assistant Server 远程绘画端
+当前模块为：Kim Voice Assistant Server 远程会话端
 
 # 模块安装
 

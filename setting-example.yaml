@@ -8,10 +8,5 @@ aliyun:
     product_key: "ThDzMyXaLLD"
     device_name: "tenstone001"
 
-  tablestore:   # 表格存储
-    endpoint: "https://kim-project.cn-hangzhou.ots.aliyuncs.com"
-    instance_name: "kim-project"
-    conversation_table_name: "conversations"
-
 
 
