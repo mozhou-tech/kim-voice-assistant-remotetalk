@@ -27,10 +27,10 @@ Kim Voice Assistant是一款开源智能语音助理（智能音箱），灵感�
 
 ## 通过Docker镜像
 通过Dockerfile构建镜像需要在服务器中预先安装docker，Docker的安装方法请参见[官方文档](https://docs.docker.com/install/)。以下为远控端程序的安装步骤：
-Step1：下载代码到本地（服务器）
-Step2：将setting-example.yaml复制为setting.yaml，并将对应的阿里云配置改成你自己的
-Step3：运行 "docker build -t kim-server . " 命令构建镜像
-Step4：运行 "docker run -itd -p 5004:80 kim-server" 启动服务（如果你使用阿里云ECS，请开放5004端口安全策略）
+Step1：下载代码到本地（服务器） <br>
+Step2：将setting-example.yaml复制为setting.yaml，并将对应的阿里云配置改成你自己的 <br>
+Step3：运行 "docker build -t kim-server . " 命令构建镜像 <br>
+Step4：运行 "docker run -itd -p 5004:80 kim-server" 启动服务（如果你使用阿里云ECS，请开放5004端口安全策略） <br>
 
 TIPS：
 1. 你可以通过配置Nginx反向代理（参照根目录"kim-server.conf"文件），通过80端口配置域名对外服务；
