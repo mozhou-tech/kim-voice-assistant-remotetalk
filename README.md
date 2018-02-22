@@ -33,14 +33,15 @@ Step3：运行 "docker build -t kim-server . " 命令构建镜像
 Step4：运行 "docker run -itd -p 5004:80 kim-server" 启动服务（如果你使用阿里云ECS，请开放5004端口安全策略）
 
 TIPS：
-1. 你可以通过配置Nginx反向代理（参照根目录"kim-server.conf"文件），通过80端口配置域名对外服务。以下为Docker管理的常见命令；
+1. 你可以通过配置Nginx反向代理（参照根目录"kim-server.conf"文件），通过80端口配置域名对外服务；
+1. 修改根目录的Dockerfile可以指定运行的代码分支和版本。
 
+以下为Docker管理的常见命令；
 ```bash
 docker image ls # 查看镜像
 docker ps # 查看正在运行的docker容器
 docker ls -a # 查看所有容器
 ```
-1. 修改根目录的Dockerfile可以指定运行的代码分支和版本 
 
 ## 在Linux上部署安装
 直接在裸机上安装需要复杂的环境配置工作，建议通过Docker镜像直接安装，或对docker目录下的Dockerfile反向工程。
