@@ -1,4 +1,4 @@
-FROM tenstone/kim-server-base-env
+FROM tenstone/kim-server:base-env-1.0
 LABEL author=tenstone
 
 ENV PROJECT_DIR="kim-voice-assistant-server" PROJECT_GIT_PATH="https://github.com/tenstone/kim-voice-assistant-server.git"
@@ -14,8 +14,7 @@ RUN git clone $PROJECT_GIT_PATH
 WORKDIR $BASE_PATH/$PROJECT_DIR
 COPY . .
 
-RUN cp setting-example.yaml setting.yaml \
-    && cp -f nginx.conf /etc/nginx/nginx.conf \
+RUN cp -f nginx.conf /etc/nginx/nginx.conf \
     && rm -f /etc/nginx/conf.d/default.conf \
     && git pull \
     # uwsgi python plugin
