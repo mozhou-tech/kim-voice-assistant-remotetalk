@@ -28,6 +28,9 @@ docker image ls # 查看镜像
 docker ps # 查看正在运行的docker容器
 docker ls -a # 查看所有容器
 ```
+## 配置镜像加速器
+
+https://cr.console.aliyun.com/#/accelerator
 
 ## 在Linux上部署安装
 直接在裸机上安装需要复杂的环境配置工作，建议通过Docker镜像直接安装，或对docker目录下的Dockerfile反向工程。
