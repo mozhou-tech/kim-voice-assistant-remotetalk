@@ -1,6 +1,6 @@
 # 介绍 
 
-Kim远程会话服务端是[Kim智能语音助理](https://github.com/tenstone/kim-voice-assistant-iot-client)的选配模块，为你的语言助理提供API远控能力，同时基于API提供了一个WebApp。
+Kim远程会话服务端是[Kim智能语音助理](https://github.com/tenstone/kim-voice-assistant-iot-client)的选配模块，为你的语音助理提供API远控能力，同时基于API提供了一个WebApp。
 
 [![GitHub issues](https://img.shields.io/github/issues/tenstone/kim-voice-assistant-server.svg)](https://github.com/tenstone/kim-voice-assistant-server/issues)
 [![Python3.6](https://img.shields.io/badge/python3.6-green-brightgreen.svg)](https://www.python.org)

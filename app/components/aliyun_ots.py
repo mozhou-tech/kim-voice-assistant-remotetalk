@@ -3,13 +3,14 @@ from config import profile
 import time
 import json
 import logging
+from app.components.iot_shadow_cfg import read_shadow_cfg_from_cache as cfg
 
 
 class OTSTools:
     def __init__(self):
-        self.client = OTSClient(end_point=profile.aliyun_ots_endpoint, access_key_id=profile.aliyun_ak_id,
-                                access_key_secret=profile.aliyun_ak_secret, instance_name=profile.aliyun_ots_instance)
-        self.table_name = profile.aliyun_ots_conversation_table
+        self.client = OTSClient(end_point=cfg()['cfg_tablestore_endpoint'], access_key_id=profile.aliyun_ak_id,
+                                access_key_secret=profile.aliyun_ak_secret, instance_name=cfg()['cfg_tablestore_instance'])
+        self.table_name = cfg()['cfg_tablestore_table']
         self.logger = logging.getLogger()
 
     def get_table_list(self):
