@@ -16,6 +16,7 @@ COPY . .
 
 RUN cp -f nginx.conf /etc/nginx/nginx.conf \
     && rm -f /etc/nginx/conf.d/default.conf \
+    && rm -f Dockerfile \
     && git pull \
     # uwsgi python plugin
     && apk --no-cache add uwsgi-python3 \
