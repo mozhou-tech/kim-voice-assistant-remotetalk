@@ -4,10 +4,12 @@ ENV PROJECT_DIR="kim-voice-assistant-server"  BASE_PATH="/app"
 WORKDIR $BASE_PATH/$PROJECT_DIR
 
 # 更新代码
-RUN git pull --force \
-    && npm run build
+RUN git pull --force
 # 切换分支
 #    && git branch
 
 # 复制配置文件
 COPY setting.yaml setting.yaml
+WORKDIR $BASE_PATH/$PROJECT_DIR/app/client/app/
+RUN npm run build
+WORKDIR $BASE_PATH/$PROJECT_DIR
