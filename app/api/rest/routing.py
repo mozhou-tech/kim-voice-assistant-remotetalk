@@ -10,7 +10,7 @@ from app.api.rest.base import BaseResource, SecureResource, rest_resource
 from app.components.aliyun_ots import OTSTools
 from app.components.aliyun_iot import IotServer
 from config.path import APP_PATH
-import json
+import json, time
 from app.components.auth import check_passwd, check_api_token
 from app.components.iot_shadow_cfg import read_shadow_cfg_from_cache
 
@@ -23,6 +23,9 @@ class Auth(BaseResource):
         pass
 
     def post(self):
+        read_shadow_cfg_from_cache(True)
+        time.sleep(0.5)
+
         if check_passwd(request.get_json()['passwd']):
             return {'errcode': 0, 'errmsg': 'ok', 'data': {
                 'api_token': read_shadow_cfg_from_cache()['cfg_remote_control_api_token']
