@@ -27,8 +27,7 @@ WORKDIR $BASE_PATH/$PROJECT_DIR/app/client/app
 
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org \
     && cnpm install \
-    && npm run build \
-    && rm -rf node_modules
+    && npm run build
 
 WORKDIR $BASE_PATH/$PROJECT_DIR
 RUN chown nginx:nginx * -R && chmod +x start.sh
