@@ -21,10 +21,12 @@
       </div>
     </div>
     <div class="level">
-      <div class="level-item title has-text-centered is-fullwidth">
+      <div class="level-item title has-text-centered">
         <p> {{ $store.state.title_desc }} </p>
       </div>
-      <div class="level-item has-text-centered is-fullwidth"><p style="text-align: center;"> {{ errmsg }} </p></div>
+    </div>
+    <div class="level">
+            <div class="level-item has-text-centered is-fullwidth"><p style="text-align: center;"> {{ errmsg }} </p></div>
     </div>
 </section>
 </template>
