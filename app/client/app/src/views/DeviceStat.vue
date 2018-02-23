@@ -24,6 +24,8 @@
                   <table class="table">
                     <tr><td>设备名称</td><td>{{ deviceStat.DeviceName+' ( ' + deviceStat.cfg_myname + ' )' || 'empty' }}</td></tr>
                     <tr><td>设备编码</td><td>{{ deviceStat.DeviceId || 'empty'}}</td></tr>
+                    <tr><td>软件版本</td><td>{{ deviceStat.cfg_device_client_version }}</td></tr>
+                    <tr><td>热词模型</td><td>{{ deviceStat.cfg_hotword_files }}</td></tr>
                     <tr><td>设备IP</td><td>{{ deviceStat.cfg_local_ip || 'empty' }}</td></tr>
                     <tr><td>城市/时区</td><td>{{ deviceStat.cfg_city +'，'+ deviceStat.cfg_timezone || 'empty' }}</td></tr>
                     <tr><td>远程会话</td><td>{{ deviceStat.cfg_remote_control_service_enable?'已开启':'已关闭 ( 开启后可对话 )' || '否' }}</td></tr>
