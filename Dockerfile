@@ -1,4 +1,4 @@
-FROM tenstone/kim-server:code-1.0
+FROM tenstone/kim-remotetalk:code-v1.0
 
 ENV PROJECT_DIR="kim-voice-assistant-remotetalk"  BASE_PATH="/app"
 WORKDIR $BASE_PATH/$PROJECT_DIR
