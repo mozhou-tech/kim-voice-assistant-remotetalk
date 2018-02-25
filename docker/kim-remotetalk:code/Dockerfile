@@ -1,7 +1,7 @@
-FROM tenstone/kim-server:base-env-1.0
+FROM tenstone/kim-remotetalk:base-v1.0
 LABEL author=tenstone
 
-ENV PROJECT_DIR="kim-voice-assistant-server" PROJECT_GIT_PATH="https://github.com/tenstone/kim-voice-assistant-server.git"
+ENV PROJECT_DIR="kim-voice-assistant-remotetalk" PROJECT_GIT_PATH="https://github.com/tenstone/kim-voice-assistant-remotetalk.git"
 ENV BASE_PATH "/app"
 
 # 进入工作目录

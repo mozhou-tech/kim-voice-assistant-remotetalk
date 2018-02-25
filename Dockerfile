@@ -1,6 +1,6 @@
 FROM tenstone/kim-server:code-1.0
 
-ENV PROJECT_DIR="kim-voice-assistant-server"  BASE_PATH="/app"
+ENV PROJECT_DIR="kim-voice-assistant-remotetalk"  BASE_PATH="/app"
 WORKDIR $BASE_PATH/$PROJECT_DIR
 
 # 更新代码
