@@ -19,4 +19,4 @@ PyYAML==3.12
 six==1.11.0
 tablestore==4.3.2
 urllib3==1.22
-Werkzeug==0.12.2
+Werkzeug==0.15.3
