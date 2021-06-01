@@ -18,5 +18,5 @@ pytz==2017.3
 PyYAML==3.12
 six==1.11.0
 tablestore==4.3.2
-urllib3==1.22
+urllib3==1.26.5
 Werkzeug==0.12.2
